@@ -29,6 +29,7 @@ import com.example.demoandengine.entity.Glass;
 import com.example.demoandengine.entity.Item;
 import com.example.demoandengine.entity.Obstacle;
 import com.example.demoandengine.entity.Princess;
+import com.example.demoandengine.entity.Spider;
 import com.example.demoandengine.entity.StarveFlower;
 import com.example.demoandengine.entity.Stone;
 import com.example.demoandengine.entity.Princess.State;
@@ -48,6 +49,7 @@ public class GameScene extends AbstractScene implements
 
 	private AnimatedSprite steppedGrass;
 	private Princess princess;
+	private Spider mSpider;
 	private Boolean mWalking = false;
 	private DigitalOnScreenControl mDigitalOnScreenControl;
 
@@ -67,6 +69,7 @@ public class GameScene extends AbstractScene implements
 		attachObstacles();
 		attachItems();
 		attachStepGrass();
+		attachSpiders();
 		createPlayer();
 	}
 
@@ -80,6 +83,13 @@ public class GameScene extends AbstractScene implements
 		for (Item item : res.getItems()) {
 			attachChild(item);
 		}
+	}
+
+	private void attachSpiders(){
+		mSpider = Spider.createSpider();
+		mSpider.setX(Constants.WIDTH_CELL * 7);
+		mSpider.setY(Constants.HEIGHT_CELL * 1);
+		attachChild(mSpider);
 	}
 
 	private void createPlayer() {
