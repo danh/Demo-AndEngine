@@ -70,7 +70,7 @@ public class ResourceManager {
 	public TiledTextureRegion mStone;
 	public TiledTextureRegion mBrick;
 	public TiledTextureRegion mStarveFlower;
-	public TiledTextureRegion mStepedGrass;
+	public TiledTextureRegion mSteppedGrass;
 	public ITextureRegion mOnScreenControlBaseTextureRegion;
 	public ITextureRegion mOnScreenControlKnobTextureRegion;
 
@@ -140,7 +140,7 @@ public class ResourceManager {
 		this.mBrick = BitmapTextureAtlasTextureRegionFactory
 				.createTiledFromAsset(gameTextureAtlas, activity.getAssets(),
 						"brick.png", 1, 1);
-		this.mStepedGrass = BitmapTextureAtlasTextureRegionFactory
+		this.mSteppedGrass = BitmapTextureAtlasTextureRegionFactory
 				.createTiledFromAsset(gameTextureAtlas, activity.getAssets(),
 						"steped_grass.png", 1, 1);
 		this.mStarveFlower = BitmapTextureAtlasTextureRegionFactory

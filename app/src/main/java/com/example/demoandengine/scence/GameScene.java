@@ -47,7 +47,7 @@ public class GameScene extends AbstractScene implements
 
 	private PlayerDirection mPlayerDirection = PlayerDirection.RIGHT;
 
-	private AnimatedSprite stepedGrass;
+	private AnimatedSprite steppedGrass;
 	private Princess princess;
 	private Spider mSpider;
 	private Boolean mWalking = false;
@@ -149,10 +149,10 @@ public class GameScene extends AbstractScene implements
 
 							final int globalId = DataManager.getInstance()
 									.getTileId(mRowGoingTo, mColGoingTo);
-							stepedGrass.setVisible(true);
+							steppedGrass.setVisible(true);
 							switch (globalId) {
 							case Constants.STEPED_FIELD:
-								stepedGrass.setVisible(false);
+								steppedGrass.setVisible(false);
 							case Constants.BLANK:
 							case Constants.FIELD:
 							case Constants.GATE:
@@ -218,10 +218,10 @@ public class GameScene extends AbstractScene implements
 	}
 
 	private void attachStepGrass() {
-		stepedGrass = new AnimatedSprite(Constants.WIDTH_CELL,
+		steppedGrass = new AnimatedSprite(Constants.WIDTH_CELL,
 				Constants.HEIGHT_CELL,
 				ResourceManager.getInstance().mStepedGrass, vbom);
-		attachChild(stepedGrass);
+		attachChild(steppedGrass);
 	}
 
 	private Obstacle getStone(int row, int col) {
@@ -293,7 +293,7 @@ public class GameScene extends AbstractScene implements
 	protected void onManagedUpdate(float pSecondsElapsed) {
 		super.onManagedUpdate(pSecondsElapsed);
 		if (princess != null) {
-			stepedGrass.setPosition(princess.getX(), princess.getY());
+			steppedGrass.setPosition(princess.getX(), princess.getY());
 		}
 	}
 
