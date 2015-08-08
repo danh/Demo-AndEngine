@@ -220,7 +220,7 @@ public class GameScene extends AbstractScene implements
 	private void attachStepGrass() {
 		steppedGrass = new AnimatedSprite(Constants.WIDTH_CELL,
 				Constants.HEIGHT_CELL,
-				ResourceManager.getInstance().mStepedGrass, vbom);
+				ResourceManager.getInstance().mSteppedGrass, vbom);
 		attachChild(steppedGrass);
 	}
 
