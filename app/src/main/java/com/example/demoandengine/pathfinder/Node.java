@@ -1,4 +1,4 @@
-package com.example.demoandengine.model;
+package com.example.demoandengine.pathfinder;
 
 import android.graphics.Point;
 

@@ -1,9 +1,10 @@
-package com.example.demoandengine.model;
+package com.example.demoandengine.pathfinder;
 
 import android.graphics.Point;
 
+import com.example.demoandengine.utils.Constants;
+
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  * Created by DanhDong on 8/4/2015.
@@ -59,7 +60,7 @@ public class AreaMap {
             for (int y=0; y<mapHeight; y++) {
                 node = new Node(x,y,this);
                 try {
-                    if (obstacleMap[y][x] == 1)
+                    if (obstacleMap[y][x] > Constants.STEPED_FIELD)
                         node.setObstical(true);
                 } catch (Exception e) {}
                 map.get(x).add(node);

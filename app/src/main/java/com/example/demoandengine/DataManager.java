@@ -8,7 +8,7 @@ import com.example.demoandengine.model.Data;
 
 public class DataManager extends Observable {
 	private volatile static DataManager instance;
-	private int[] mTileIds;
+	private int[][] mTileIds;
 	private int mRows;
 	private int mCols;
 
@@ -29,32 +29,48 @@ public class DataManager extends Observable {
 	}
 
 	public void setTile(TMXTile[][] tile, int rows, int cols) {
-		this.mCols = cols;
-		this.mRows = rows;
+		this.setCols(cols);
+		this.setRows(rows);
 
-		mTileIds = new int[mRows * mCols];
+		mTileIds = new int[getRows()][getRows()];
 
-		int position = 0;
-		for (int i = 0; i < mRows; i++) {
-			for (int j = 0; j < mCols; j++) {
-				position = i * mCols + j;
-				mTileIds[position] = tile[i][j].getGlobalTileID();
+		for (int i = 0; i < getRows(); i++) {
+			for (int j = 0; j < getCols(); j++) {
+				mTileIds[i][j] = tile[i][j].getGlobalTileID();
 			}
 		}
 	}
 
 	public int getTileId(int row, int col) {
-		if (row >= mRows || row < 0 || col >= mCols || col < 0) {
+		if (row >= getRows() || row < 0 || col >= getCols() || col < 0) {
 			return -1;
 		}
-		int position = row * mCols + col;
-		return mTileIds[position];
+		return mTileIds[row][col];
 	}
 
 	public void updateTileId(int row, int col, int value) {
-		int position = row * mCols + col;
-		mTileIds[position] = value;
+		mTileIds[row][col] = value;
 		setChanged();
 		notifyObservers(new Data(row, col, value));
+	}
+
+	public int[][]getTileIds(){
+		return  mTileIds;
+	}
+
+	public int getRows() {
+		return mRows;
+	}
+
+	public void setRows(int mRows) {
+		this.mRows = mRows;
+	}
+
+	public int getCols() {
+		return mCols;
+	}
+
+	public void setCols(int mCols) {
+		this.mCols = mCols;
 	}
 }
